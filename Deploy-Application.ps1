@@ -66,7 +66,7 @@ Try {
 	##*===============================================
 	## Variables: Application
 	[string]$appVendor = ''
-	[string]$appName = 'ApplicationXtender Desktop'
+	[string]$appName = 'ApplicationXtender Desktop Uninstaller'
 	[string]$appVersion = '6.5'
 	[string]$appArch = ''
 	[string]$appLang = 'EN'
@@ -166,7 +166,7 @@ Try {
 		[string]$installPhase = 'Pre-Uninstallation'
 
 		## Show Welcome Message, close Internet Explorer with a 60 second countdown before automatically closing
-		Show-InstallationWelcome -CloseApps 'iexplore' -CloseAppsCountdown 60
+		Show-InstallationWelcome -CloseApps 'appxtender' -CloseAppsCountdown 60
 
 		## Show Progress Message (with the default message)
 		Show-InstallationProgress
@@ -196,9 +196,8 @@ Try {
 		[string]$installPhase = 'Post-Uninstallation'
 
 		## <Perform Post-Uninstallation tasks here>
-
-		Execute-MSI -Action "Uninstall" -Path "{19FE0816-EB78-4704-AD22-0A02B3E82B1A}"
-
+		Remove-Folder -Path "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\ApplicationXtender Desktop"
+		Remove-Folder -Path "C:\Program Files (x86)\XtenderSolutions"
 
 	}
 
